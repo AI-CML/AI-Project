@@ -72,3 +72,9 @@ For the `Road Damage Dataset` , you can download the original dataset from [Kagg
 
 ### 3. 실환경 주행 영상 추론 (Inference on Video)
 * **`실제 영상 테스트.ipynb`**: 학습된 가중치를 바탕으로, 정량적 수치(mAP) 대신 실제 블랙박스 주행 환경에서 바운딩 박스가 정확히 매핑되는지 확인하는 정성적 검증 코드
+
+## 사용 기술 및 환경 (Tech Stack)
+- **Language:** Python
+- **AI Model:** YOLO11
+- **Environment:** Google Colab, GitHub
+
