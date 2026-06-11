@@ -38,10 +38,13 @@ For the `Road Damage Dataset` , you can download the original dataset from [Kagg
 
 ---
 
-## 📊 실험 결과 (Experimental Results - Val 기준)
+## 실험 결과 (Experimental Results - Val 기준)
 해외 오픈 데이터셋 환경에서 다양한 기법을 적용하며 성능 변화를 측정했습니다.
 
-| 실험 및 적용 기법 | mAP | 결과 분석 (도메인 갭의 영향) |
+> **💡 Note: Test 평가 대신 Val 지표를 사용한 이유**
+> 학습 데이터와 직접 수집한 실전 테스트 데이터 간의 YAML 클래스 ID 구조 불일치(Label Mismatch)가 발생했습니다. 강제 레이블 변환 시 발생할 수 있는 평가 지표의 왜곡을 방지하기 위해, 정량적 수치(mAP) 평가는 **Val 데이터셋**을 기준으로 통일했습니다. 대신, Test 데이터는 수치화에 얽매이지 않고 실제 주행 영상에서 바운딩 박스가 정확히 매핑되는지 확인하는 **정성적 검증(Qualitative Evaluation)** 으로 전환하여 실효성을 입증했습니다.
+
+| 실험 및 적용 기법 | mAP | 결과 분석 |
 | :--- | :--- | :--- |
 | **Baseline (YOLO11s)** | **0.557** | **해외 데이터로 학습된 순수 탐지 성능 (가장 높음)** |
 | Model Upgrade (YOLO11m) | 0.557 | 모델 체급을 올렸으나 동일한 수치 도출 (데이터 병목 확인) |
