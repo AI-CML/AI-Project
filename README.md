@@ -41,7 +41,7 @@ For the `Road Damage Dataset` , you can download the original dataset from [Kagg
 ## 실험 결과 (Experimental Results - Val 기준)
 해외 오픈 데이터셋 환경에서 다양한 기법을 적용하며 성능 변화를 측정함.
 
-> **💡 Note: Test 평가 대신 Val 지표를 사용한 이유**
+> ** Note: Test 평가 대신 Val 지표를 사용한 이유**
 >
 > 학습 데이터와 직접 수집한 실전 테스트 데이터 간의 YAML 클래스 ID 구조 불일치(Label Mismatch)가 발생함. 
 > 강제 레이블 변환 시 발생할 수 있는 평가 지표의 왜곡을 방지하기 위해, 정량적 수치(mAP) 평가는 **Val 데이터셋**을 기준으로 통일하였다. 
@@ -56,6 +56,19 @@ For the `Road Damage Dataset` , you can download the original dataset from [Kagg
 | Processing (ROI Crop) | 0.535 | 불필요한 배경 제거가 도로 원근감 및 주변 탐지 능력 훼손 |
 | Processing (CLAHE) | 0.477 | 명암 강조로 아스팔트 질감/미세 노이즈가 증폭되어 오탐지 급증 |
 
-> **🔥 결론:** 모델 성능을 올리기 위한 인위적인 전처리(ROI, CLAHE, Augmentation)가 실환경에서는 오히려 노이즈를 증폭시키고 맥락을 훼손함. 섣부른 전처리보다 **국내 도로 규격에 맞춘 데이터 구축 등 '데이터 중심(Data-centric)' 접근이 필수적**임을 확인.
+> **결론:** 모델 성능을 올리기 위한 인위적인 전처리(ROI, CLAHE, Augmentation)가 실환경에서는 오히려 노이즈를 증폭시키고 맥락을 훼손함. 섣부른 전처리보다 **국내 도로 규격에 맞춘 데이터 구축 등 '데이터 중심(Data-centric)' 접근이 필수적**임을 확인.
 
 ---
+
+## Run
+
+### 1. 베이스라인 및 일반 검증
+* **`Baseline.ipynb`**: 전처리가 가해지지 않은 순수 YOLOv11s 모델 학습 및 평가 (mAP: 0.557)
+* **`YOLO Val.ipynb`**: 모델 평가 및 검증 지표(Val) 산출 코드
+
+### 2. 전처리 최적화 실험 (Preprocessing Experiments)
+* **`Crop.ipynb` / `Crop train.ipynb`**: 불필요한 배경을 잘라내는 ROI Crop 전처리 적용 및 학습 파일 (mAP: 0.535)
+* **`YOLO Clahe.ipynb`**: 이미지 명암을 극대화하는 CLAHE 필터 적용 및 학습 파일 (mAP: 0.477)
+
+### 3. 실환경 주행 영상 추론 (Inference on Video)
+* **`실제 영상 테스트.ipynb`**: 학습된 가중치를 바탕으로, 정량적 수치(mAP) 대신 실제 블랙박스 주행 환경에서 바운딩 박스가 정확히 매핑되는지 확인하는 정성적 검증 코드
