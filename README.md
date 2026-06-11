@@ -12,3 +12,12 @@
 
 ![framework](Project%20Flowchart.png)
 <p align="center"><b>본 연구의 수행 절차 흐름도 (데이터 전처리 및 YOLOv11 기반 평가 프로세스)</b></p>
+
+## Installation
+
+To get started, clone the repository and install dependencies:
+
+```bash
+!git clone https://github.com/AI-CML/AI-Project.git %cd AI-Project
+!pip install -r requirements.txt
+```
