@@ -35,3 +35,20 @@ numpy
 ## Datasets
 
 For the `Road Damage Dataset` , you can download the original dataset from [Kaggle](https://www.kaggle.com/datasets/lorenzoarcioni/road-damage-dataset-potholes-cracks-and-manholes).
+
+---
+
+## 📊 실험 결과 (Experimental Results - Val 기준)
+해외 오픈 데이터셋 환경에서 다양한 기법을 적용하며 성능 변화를 측정했습니다.
+
+| 실험 및 적용 기법 | mAP | 결과 분석 (도메인 갭의 영향) |
+| :--- | :--- | :--- |
+| **Baseline (YOLO11s)** | **0.557** | **해외 데이터로 학습된 순수 탐지 성능 (가장 높음)** |
+| Model Upgrade (YOLO11m) | 0.557 | 모델 체급을 올렸으나 동일한 수치 도출 (데이터 병목 확인) |
+| Augmentation (데이터 증강) | 0.543 | 인위적인 증강 기법이 오히려 노이즈를 증폭시켜 성능 저하 |
+| Processing (ROI Crop) | 0.535 | 불필요한 배경 제거가 도로 원근감 및 주변 탐지 능력 훼손 |
+| Processing (CLAHE) | 0.477 | 명암 강조로 아스팔트 질감/미세 노이즈가 증폭되어 오탐지 급증 |
+
+> **🔥 결론:** 모델 성능을 올리기 위한 인위적인 전처리(ROI, CLAHE, Augmentation)가 실환경에서는 오히려 노이즈를 증폭시키고 맥락을 훼손함. 섣부른 전처리보다 **국내 도로 규격에 맞춘 데이터 구축 등 '데이터 중심(Data-centric)' 접근이 필수적**임을 확인.
+
+---
