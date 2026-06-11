@@ -10,5 +10,5 @@
 2. **ROI Crop의 한계:** 불필요한 배경을 잘라낼 경우, 모델이 도로의 원근감과 주변을 파악할 '공간적 맥락(Context)'을 상실하여 탐지 성능이 저하됨.
 3. **정성적 평가(Inference) 전환:** 이종 데이터셋 간 YAML 클래스 구조 불일치 문제를 식별하고, 수치적 오류를 방지하기 위해 실제 주행 영상 기반의 바운딩 박스 매핑(정성적 평가)으로 검증 전략을 수정함.
 
-![framework](ProjectFlowchart.png)
+![framework](Project%20Flowchart.png)
 <p align="center"><b>본 연구의 수행 절차 흐름도 (데이터 전처리 및 YOLOv11 기반 평가 프로세스)</b></p>
