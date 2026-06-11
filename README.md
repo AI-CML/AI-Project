@@ -34,6 +34,4 @@ numpy
 
 ## Datasets
 
-We use the custom road damage detection dataset in our project. (Kaggle 원본 데이터를 하단 크롭 등 전처리하여 사용)
-
 For the `Road Damage Dataset` , you can download the original dataset from [Kaggle](https://www.kaggle.com/datasets/lorenzoarcioni/road-damage-dataset-potholes-cracks-and-manholes).
